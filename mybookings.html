@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S & R & S Café</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-expand-lg navbar-dark cafe-nav">
+<div class="container">
+
+<a class="navbar-brand" href="index.html">
+☕ S & R & S
+</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="menu.html">Menu</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="gallery.html">Gallery</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="about.html">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="booking.html">Book a Table</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="mybookings.html">My Bookings</a>
+</li>
+
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- MY BOOKINGS PAGE -->
+<div id="bookings" class="page active">
+
+<section class="container section-pad">
+
+<div class="text-center mb-5">
+<p class="eyebrow">YOUR SAVED REQUESTS</p>
+<h1>My Bookings</h1>
+<p class="section-intro">
+Your saved booking requests will appear here.
+</p>
+</div>
+
+<div id="bookingList" class="row g-3"></div>
+
+<div id="emptyBookings" class="text-center p-5">
+<div class="feature-icon">☕</div>
+<h2>No Bookings Yet</h2>
+<p>Save a booking request to see it here.</p>
+
+<a class="btn btn-cafe" href="booking.html">
+Make a Booking
+</a>
+
+</div>
+
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+© <span id="year"></span> S & R & S
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+// Current year
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+
+// DISPLAY BOOKINGS
+function displayBookings() {
+  const list = document.getElementById('bookingList');
+  const empty = document.getElementById('emptyBookings');
+
+  list.innerHTML = '';
+
+  const bookings = JSON.parse(
+    localStorage.getItem('SRSBookings') || '[]'
+  );
+
+  empty.classList.toggle('d-none', bookings.length > 0);
+
+  bookings.slice().reverse().forEach(function(booking) {
+    const col = document.createElement('div');
+    col.className = 'col-md-6 col-lg-4';
+
+    const card = document.createElement('div');
+    card.className = 'booking-card';
+
+    const title = document.createElement('h3');
+    title.textContent = booking.name;
+    card.appendChild(title);
+
+    const details = [
+      ['Email', booking.email],
+      ['Phone', booking.phone],
+      ['Guests', booking.guests],
+      ['Date', booking.date],
+      ['Time', booking.time],
+      ['Request', booking.notes || 'None']
+    ];
+
+    details.forEach(function(detail) {
+      const p = document.createElement('p');
+      const strong = document.createElement('strong');
+
+      strong.textContent = detail[0] + ': ';
+      p.appendChild(strong);
+      p.appendChild(document.createTextNode(detail[1]));
+
+      card.appendChild(p);
+    });
+
+    const deleteButton = document.createElement('button');
+    deleteButton.className =
+      'btn btn-outline-secondary mt-3';
+    deleteButton.textContent = 'Delete Booking';
+
+    deleteButton.addEventListener('click', function() {
+      const updated = bookings.filter(function(item) {
+        return item.id !== booking.id;
+      });
+
+      localStorage.setItem(
+        'SRSBookings',
+        JSON.stringify(updated)
+      );
+
+      displayBookings();
+    });
+
+    card.appendChild(deleteButton);
+    col.appendChild(card);
+    list.appendChild(col);
+  });
+}
+
+displayBookings();
+
+</script>
+
+</body>
+</html>

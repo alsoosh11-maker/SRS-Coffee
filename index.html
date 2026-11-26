@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S & R & S Café</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-expand-lg navbar-dark cafe-nav">
+<div class="container">
+
+<a class="navbar-brand" href="index.html">
+☕ S & R & S
+</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="index.html">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="menu.html">Menu</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="gallery.html">Gallery</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="about.html">About</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="booking.html">Book a Table</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="mybookings.html">My Bookings</a>
+</li>
+
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+
+<header class="hero">
+<div class="container">
+
+<p class="eyebrow">YOUR LITTLE CORNER OF COMFORT</p>
+
+<h1>
+Good coffee.<br>
+<span>Beautiful moments.</span>
+</h1>
+
+<p class="lead">
+Freshly brewed coffee, handmade treats,
+and a cozy place to pause.
+</p>
+
+<a class="btn btn-cafe btn-lg" href="menu.html">
+Explore Our Menu
+</a>
+
+</div>
+</header>
+
+<section class="container section-pad text-center">
+
+<p class="eyebrow">WELCOME TO S & R & S</p>
+
+<h2>A Café Made for Your Everyday Moments</h2>
+
+<p class="section-intro">
+Meet a friend, take a study break,
+or enjoy your favorite cup.
+</p>
+
+<div class="row g-4 mt-4">
+
+<div class="col-md-4">
+<div class="feature-card">
+<div class="feature-icon">☕</div>
+<h3>Fresh Coffee</h3>
+<p>Carefully prepared coffee and comforting classics.</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature-card">
+<div class="feature-icon">🥐</div>
+<h3>Daily Treats</h3>
+<p>Sweet and savory bites baked fresh every day.</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="feature-card">
+<div class="feature-icon">🌿</div>
+<h3>Cozy Atmosphere</h3>
+<p>A welcoming place for conversations and calm.</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="highlight text-center">
+<div class="container">
+<h2>Make Your Next Coffee Date Happen</h2>
+<p>Book your table with us today.</p>
+
+<a class="btn btn-light btn-lg" href="booking.html">
+Book a Table
+</a>
+
+</div>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+© <span id="year"></span> S & R & S
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.getElementById('year').textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
